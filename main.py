@@ -1,7 +1,7 @@
 '''<--------OS LAB-9--------->
     Groups Members
-    => Muhammad Hamza Amir (247154)
-    => Abdul Rafay Ahmad   (254636)'''
+    => Muhammad Hamza Amir
+    => Abdul Rafay Ahmad '''
 
 
 
