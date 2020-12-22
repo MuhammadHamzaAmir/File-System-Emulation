@@ -1,3 +1,10 @@
+'''<--------OS LAB-9--------->
+    Groups Members
+    => Muhammad Hamza Amir (247154)
+    => Abdul Rafay Ahmad   (254636)'''
+
+
+
 from ordered_set import OrderedSet
 import inspect
 from threading import current_thread
@@ -7,7 +14,13 @@ import sys
 
 sys.setrecursionlimit(2000)
 n = len(sys.argv)
+
+if n != 2:
+    print("<python3> <File name> <Number of Threads>" + " on linux")
+    print("<python> <File name> <Number of Threads>" + " on windows")
+    sys.exit()
 console_args = int(sys.argv[1])
+
 
 
 # Node Class
@@ -658,8 +671,10 @@ if n == 2:
         obj = threading_class(i)
         obj.thread_start()
         obj.thread_join()
-        dat_st = obj.dat_file_sync()
+        #dat_st = obj.dat_file_sync()
+    dat_st = obj.dat_file_sync()
     dat_st.memory_map()
     
 else :
-    print("<python3> <File name> <Thread Name>")
+    print("<python3> <File name> <Number of Threads>" + "on linux")
+    print("<python> <File name> <Number of Threads>" + "on windows")
