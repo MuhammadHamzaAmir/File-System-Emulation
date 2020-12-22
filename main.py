@@ -8,9 +8,9 @@ import sys
 sys.setrecursionlimit(2000)
 n = len(sys.argv)
 console_args = int(sys.argv[1])
+
+
 # Node Class
-
-
 class Node:
 
     def __init__(self, data):
@@ -287,17 +287,16 @@ class LinkedList:
             exlist.append(temp.id)
             temp = temp.next
         exlist = list(set(exlist))
-        print("Total Size occuppied: ", total_size // console_args)
-        print("Total Size alloted: ", (self.compute_size()-100) //
-              threading.active_count())
-        print("Total Size: ", self.l_size // console_args)
-        print("Total Sectors: ", self.t_nodes // console_args)
+        print("Total Size occuppied: ", total_size)
+        print("Total Size alloted: ", (self.compute_size()-100))
+        print("Total Size: ", self.l_size)
+        print("Total Sectors: ", self.t_nodes)
         print("Available Sectors: ", (self.t_nodes -
-                                      self.nodes) // console_args)
+                                      self.nodes))
         print("Available sector size on disk: ",
-              (100+self.l_size-self.compute_size()) // console_args)
+              (100+self.l_size-self.compute_size()))
         print("Available size orignally: ",
-              (self.l_size-(total_size)) // console_args)
+              (self.l_size-(total_size)))
 
     def get_data(self, text):
         for line in text.splitlines():
@@ -309,29 +308,17 @@ class LinkedList:
 class fileHandling:
 
     def __init__(self):
-        p = ""
-        '''
-        try:
-            self.file = open("output"+current_thread().name+".txt", "r+")
-            p = self.file.read()
-            self.file.close()
-        except:
-            pass'''
-        #self.file = open("output"+current_thread().name+".txt", "a+")
         self.file_name = ""
         self.llist = LinkedList()
-        #self.llist.get_data(p)
 
     def Create(self, *args):
         args = list(args)
         fname = args[0]
         self.file_name = fname+".txt"
         try:
-            #self.file.close()
             self.file = open("output"+current_thread().name+".txt", "a+")
             self.file.write("#"+fname)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "w+")
         except:
             pass
         print("File is Created "+"by Thread-"+current_thread().name+"\n")
@@ -341,14 +328,12 @@ class fileHandling:
         fname = args[0]
         self.file_name = ""
         try:
-            #self.file.close()
             self.file = open("output"+current_thread().name+".txt", "w+")
 
             self.llist.deleteNode(fname)
             text = self.llist.printList()
             self.file.write(text)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
             print("File is Deleted "+"by Thread-"+current_thread().name+"\n")
         except:
             pass
@@ -373,14 +358,14 @@ class fileHandling:
             args = list(args)
             fname = args[0]
             text = args[1]
-            #self.file.close()
+            
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file
             self.llist.write_to_file_insert_node(text, fname)
             text = self.llist.printList()
             v.write(text)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+            
             print("Text has been written " +
                   "by Thread-"+current_thread().name+"\n")
         except:
@@ -388,7 +373,7 @@ class fileHandling:
 
     def write_at_OVERWRITE(self, fname, write_at, text):
         try:
-            #self.file.close()
+         
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file
             s = text
@@ -397,7 +382,7 @@ class fileHandling:
             t = self.llist.printList()
             v.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+          
             print("Text has been written " +
                   "by Thread-"+current_thread().name+"\n")
         except:
@@ -405,7 +390,7 @@ class fileHandling:
 
     def write_at_noOVERWRITE(self, fname, write_at, text):
         try:
-            #self.file.close()
+            
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file
             s = text
@@ -414,7 +399,7 @@ class fileHandling:
             t = self.llist.printList()
             v.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+            
             print("Text has been written " +
                   "by Thread-"+current_thread().name+"\n")
         except:
@@ -445,7 +430,7 @@ class fileHandling:
             args = list(args)
             fname = args[0]
             text = args[1]
-            #self.file.close()
+            
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file
             s = text
@@ -453,7 +438,7 @@ class fileHandling:
             t = self.llist.printList()
             v.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+          
             print("Text Has been Appended " +
                   "by Thread-"+current_thread().name+"\n")
         except:
@@ -466,7 +451,7 @@ class fileHandling:
             start = args[1]
             size = args[2]
             target = args[3]
-            #self.file.close()
+            
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file
             p = start
@@ -476,7 +461,7 @@ class fileHandling:
             t = self.llist.printList()
             v.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+     
             print("Text Has been Moved "+"by Thread-"+current_thread().name+"\n")
         except:
             pass
@@ -487,7 +472,7 @@ class fileHandling:
             fname = args[0]
             start = args[1]
             size = args[2]
-            #self.file.close()
+            
             self.file = open("output"+current_thread().name+".txt", "w+")
             v = self.file.name
             p = start
@@ -497,10 +482,10 @@ class fileHandling:
                     fname, int(p), int(size))
                 print(text)
                 self.file.close()
-                #self.file = open("output"+current_thread().name+".txt", "a+")
+               
             except:
                 self.file.close()
-                #self.file = open("output"+current_thread().name+".txt", "a+")
+                
                 print("")
         except:
             pass
@@ -512,14 +497,14 @@ class fileHandling:
         fname = args[0]
         maxSize = args[1]
         try:
-            #self.file.close()
+           
             self.file = open("output"+current_thread().name+".txt", "w+")
             self.llist.turncate(int(maxSize),  fname)
             v = self.file
             t = self.llist.printList()
             self.file.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+           
             print("File has been Truncated " +
                   "by Thread-"+current_thread().name+"\n")
         except:
@@ -529,7 +514,7 @@ class fileHandling:
             v = self.file
             self.file.write(t)
             self.file.close()
-            #self.file = open("output"+current_thread().name+".txt", "a+")
+            
             print("File has been Truncated " +
                   "by Thread-"+current_thread().name+"\n")
 
@@ -548,7 +533,7 @@ class threading_class:
         self.file_hand = fileHandling()
         self.threading_list = []
         self.jt = 0
-        #self.total_threads = total_threads
+        
         self.t = threading.Thread(target=self.read_input_file, args=[str(thread_name_obj)],daemon=True)
         self.t.name = str(thread_name_obj)
 
@@ -613,7 +598,7 @@ class threading_class:
             files_lists_data.append(data)
             t_f_data = t_f_data + data
             inp_file.close()
-            #print(data)
+            
 
         for k in range(len(files_lists_data)):
             ex_list = []
@@ -627,7 +612,7 @@ class threading_class:
         seen = set()
         set_of_data = [x for x in updated_file_lists_data_1_0_inner if not (
             x in seen or seen.add(x))]
-        print(set_of_data)
+        
 
         ex_text = []
         for i in range(len(set_of_data)):
@@ -638,7 +623,7 @@ class threading_class:
         ex_set_file_name = [x for x in ex_text if not (
             x in seen or seen.add(x))]
 
-        #print(ex_set_file_name)
+        
 
         for i in range(len(ex_set_file_name)):
             tes = ""
@@ -649,13 +634,12 @@ class threading_class:
             tes = tes + "#" + ex_set_file_name[i]
             updated_file_lists_data_final.append(tes)
 
-        #print(updated_file_lists_data_final)
+       
 
         
 
         for k in range(len(updated_file_lists_data_final)):
             in_p = updated_file_lists_data_final[k]+"\n"
-            #dat_file.write(in_p)
             ex_p = ex_p + in_p
         
 
@@ -665,15 +649,17 @@ class threading_class:
         dat_file = open("sample.dat", "w+")
         dat_file.write(final_updated_data)
         dat_file.close()
+        return dat_struc
 
 
-
-
+dat_st = None
 if n == 2:
     for i in range(int(sys.argv[1])):
         obj = threading_class(i)
         obj.thread_start()
         obj.thread_join()
-        obj.dat_file_sync()
+        dat_st = obj.dat_file_sync()
+    dat_st.memory_map()
+    
 else :
     print("<python3> <File name> <Thread Name>")
